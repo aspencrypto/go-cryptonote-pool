@@ -24,8 +24,15 @@ Dependencies:
 
 Use Ubuntu 16.04 LTS.
 
+    sudo apt-get install git libboost-all-dev libssl-dev cmake
+
+    git clone https://github.com/monero-project/monero.git monero
+    git clone https://github.com/aspencrypto/node-cryptonote-pool.git pool
+
+
 Compile Monero source (with shared libraries option):
 
+    cd monero/
     cmake -DBUILD_SHARED_LIBS=1 .
     make
 
@@ -36,28 +43,6 @@ Install Golang and packages:
     go get github.com/yvasiyarov/gorelic
 
 Build CGO extensions:
-
-    MONERO_DIR=/opt/src/monero cmake .
-    make
-
-Build stratum:
-
-    go build -o pool main.go
-
-### Mac OS X
-
-Install Golang and packages packages:
-
-    brew update && brew install go
-    export GOPATH=~/go
-    go get github.com/yvasiyarov/gorelic
-
-Compile Monero source:
-
-    cmake .
-    make
-
-Now clone stratum repo and compile it:
 
     MONERO_DIR=/opt/src/monero cmake .
     make
